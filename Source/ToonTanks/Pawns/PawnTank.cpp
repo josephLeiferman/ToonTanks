@@ -18,7 +18,6 @@ APawnTank::APawnTank()
 void APawnTank::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -27,7 +26,6 @@ void APawnTank::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
     Rotate();
     Move();
-
 }
 
 // Called to bind functionality to input
