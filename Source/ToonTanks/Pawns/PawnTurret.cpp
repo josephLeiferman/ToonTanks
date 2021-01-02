@@ -13,6 +13,8 @@ void APawnTurret::BeginPlay()
     GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckFireCondition, FireRate, true);
 
     PlayerPawn = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this,0));
+
+    TEST();
 }
 
 // Called every frame

@@ -17,6 +17,12 @@ public:
 	// Sets default values for this pawn's properties
 	APawnBase();
 
+	void RotateTurretFunction(FVector LookAtTarget);
+
+	void Fire();
+
+	virtual void HandleDesctruction();
+
 private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
