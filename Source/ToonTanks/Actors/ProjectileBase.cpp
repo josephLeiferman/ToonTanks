@@ -4,6 +4,7 @@
 #include "ProjectileBase.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectileBase::AProjectileBase()
@@ -24,6 +25,25 @@ AProjectileBase::AProjectileBase()
 void AProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
+	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectileBase::OnHit);
 	
 }
 
+
+void AProjectileBase::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpluse, const FHitResult& Hit) 
+{
+	// Attempt to get reference to owning class
+	AActor* MyOwner = GetOwner();
+	// If there is no owner, return as an owner is need to apply damage
+	if(!MyOwner)
+	{
+		return;
+	}
+	if(OtherActor && OtherActor != this && OtherActor != MyOwner) 
+	{
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwner->GetInstigatorController(), this, DamageType);
+	}
+	// TODO Add animations before desctruction of projectile
+
+	Destroy();
+}
