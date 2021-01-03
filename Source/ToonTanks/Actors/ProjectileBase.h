@@ -7,6 +7,7 @@
 #include "ProjectileBase.generated.h"
 
 class UProjectileMovementComponent;
+
 UCLASS()
 class TOONTANKS_API AProjectileBase : public AActor
 {
