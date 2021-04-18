@@ -13,7 +13,8 @@ void ATankGameModeBase::BeginPlay()
 
 void ATankGameModeBase::ActorDied(AActor* DeadActor) 
 {
-    // Check what type of Actor died if turre, tally, If Player -> go to lose condition
+    // Check what type of Actor died if turret, tally, If Player -> go to lose condition
+    UE_LOG(LogTemp, Warning, TEXT("A Pawn Died"));
 }
 
 void ATankGameModeBase::HandleGameOver(bool PlayerWon) 
